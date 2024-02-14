@@ -1,30 +1,32 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Str1 } from "../components/SVG/Str1";
-import {avatar} from "../Images/index";
+import images from "../Images/index";
 
-export default function ProfileModal({
+export default ({
   openProfile,
   setOpenProfile,
   currentUser,
   getShipmentsCount
-}) {
+})=>{
   const [count, setCount] = useState(0); // Default count value set to 0
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchShipmentData = async () => {
       try {
         const allData = await getShipmentsCount();
         setCount(allData);
       } catch (error) {
-        console.error("Error fetching shipment count:", error);
+        console.error('Error fetching shipment data:', error);
       }
     };
 
-    if (openProfile) {
-      fetchData();
-    }
-  }, [openProfile, getShipmentsCount]); // Added dependencies to useEffect
+    fetchShipmentData();
+
+    // Since there are no dependencies in this useEffect, you can omit the dependency array
+    // This will make sure the effect runs only once after the component mounts
+
+  }, []); // Added dependencies to useEffect
 
   return openProfile ? (
     <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -46,7 +48,7 @@ export default function ProfileModal({
             <div className="flex flex-col items-center pb-10">
               <Image
                 className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                src={avatar}
+                src={images.avatar}
                 alt="bunny image"
                 width={96}
                 height={96}

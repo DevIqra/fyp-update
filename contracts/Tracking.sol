@@ -34,7 +34,6 @@ contract Tracking {
         address indexed sender,
         address indexed reciever,
         uint256 pickUpTime,
-        uint256 deliveryTime,
         uint256 distance,
         uint256 price
     );
@@ -93,7 +92,6 @@ contract Tracking {
         emit ShipmentCreated(
             msg.sender,
             _reciever,
-            0,
             _pickupTime,
             _distance,
             _price

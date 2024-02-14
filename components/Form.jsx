@@ -12,14 +12,15 @@ export default ({
     distance: "",
     price: "",
   });
+const createItem = async()=>{
+  try{
+    await createShipment(shipment);
 
-  const createItem = async () => {
-    try {
-      await createShipment(shipment);
-    } catch (error) {
-      console.log("Wrong Creating Item");
-    }
-  };
+  }catch(error){
+    console.log("Wrong Item created ")
+  }
+}
+
   return createShipmentModel ? (
     <div className="fixed inset-0 z-10 overflow-y-auto">
       <div
@@ -61,7 +62,7 @@ export default ({
                 <input
                   type="text"
                   placeholder="receiver"
-                  className="w-full pl-5 pr-3 text-gray-50 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                  className="w-full pl-5 pr-3  bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                   onChange={(e) =>
                     setShipment({
                       ...shipment,
@@ -74,7 +75,7 @@ export default ({
                 <input
                   type="date"
                   placeholder="pickupTime"
-                  className=" w-full pl-5 pr-3 text-gray-50 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                  className=" w-full pl-5 pr-3  bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                   onChange={(e) =>
                     setShipment({
                       ...shipment,
@@ -86,9 +87,9 @@ export default ({
 
               <div className="relative mt-3">
                 <input
-                  type="date"
+                  type="text"
                   placeholder="distance"
-                  className=" w-full pl-5 pr-3 text-gray-50 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                  className=" w-full pl-5 pr-3  bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                   onChange={(e) =>
                     setShipment({
                       ...shipment,
@@ -102,7 +103,7 @@ export default ({
                 <input
                   type="text"
                   placeholder="price"
-                  className=" w-full pl-5 pr-3 text-gray-50 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                  className=" w-full pl-5 pr-3  bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                   onChange={(e) =>
                     setShipment({
                       ...shipment,
@@ -113,10 +114,10 @@ export default ({
               </div>
 
               <button
-                onClick={() => createItem}
+                onClick={() => createItem()}
                 className="block w-full mt-3 py-4 px-4 font-medium text-center text-sm text-white bg-indigo-500 hover:bg-indigo-600 rounded-lg ring-2"
               >
-                Create Shipment{" "}
+                Create Shipment
               </button>
             </form>
           </div>

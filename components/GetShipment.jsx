@@ -1,15 +1,15 @@
 
-import React , {useState} from 'react'
-import { Str1 } from '.'
+import {useState} from 'react'
+import { Str1 } from './SVG/Str1'
 
-const GetShipment = ({getModel , setGetModel , getShipment}) => {
+export default ({getModel , setGetModel , getShipment}) => {
   const [index , setIndex]=useState(0)
   const [singleShipmentData , setSingleShipmentData] = useState()
   
   const getshipmentData = async () =>{
-    const getData = await getShipment(index)
-    setSingleShipmentData(getData)
-    console.log(getData)
+    const getData = await getShipment(index);
+    setSingleShipmentData(getData);
+    console.log(getData);
   }
   console.log(singleShipmentData);
   
@@ -18,7 +18,6 @@ const GetShipment = ({getModel , setGetModel , getShipment}) => {
     const dateTime = new Intl.DateTimeFormat("en US" , {
       year : "numeric",
       month : "2-digit",
-      dateStyle : "full",
       day : "2-digit"
     }).format(newTime)
     return dateTime
@@ -54,8 +53,8 @@ const GetShipment = ({getModel , setGetModel , getShipment}) => {
                 <div className='text-left'>
                   <p> Sender : {singleShipmentData.sender.slice(0 , 25)} ...</p>
                   <p> Receiver : {singleShipmentData.receiver.slice(0 , 25)} ...</p>
-                  <p> PickupTime : {convTime.singleShipmentData.pickupTime} </p>
-                  <p> delivery Time  : {singleShipmentData.deliveryTime} </p>
+                  <p> PickupTime : {convTime(singleShipmentData.pickupTime)} </p>
+                  <p> delivery Time  : { convTime(singleShipmentData.deliveryTime)} </p>
                   <p> Distance : {singleShipmentData.distance} </p>
                   <p> Price : {singleShipmentData.price} </p>
                   <p> Status : {singleShipmentData.status} </p>
@@ -75,6 +74,5 @@ const GetShipment = ({getModel , setGetModel , getShipment}) => {
   ):(
 ""
   )
-}
+};
 
-export default GetShipment

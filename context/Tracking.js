@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import web3Modal from "web3modal";
+import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 //  internal import
 import tracking from "../context/Tracking.json";
@@ -17,9 +17,10 @@ export const TrackingProvider = ({ children }) => {
     console.log(items);
     const { receiver, pickUpTime, distance, price } = items;
     try {
-      const web3modal = new web3Modal();
+      const web3modal = new Web3Modal();
       const connection = await web3modal.connect();
-      const provider = new ethers.providers.web3Provider(connection);
+      const provider = new ethers.providers.Web3Provider(connection); // Corrected this line
+
       const signer = provider.getSigner();
       const contract = fetchContract(signer);
       const createItem = await contract.createShipment(
@@ -36,7 +37,8 @@ export const TrackingProvider = ({ children }) => {
     } catch (error) {
       console.log("some went wrong", error);
     }
-  };
+};
+
   const getAllShipment = async () => {
     try {
       const provider = new ethers.providers.JsonRpcProvider();

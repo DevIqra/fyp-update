@@ -49,6 +49,9 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
             {allShipmentsdata?.map((shipment, idx) => (
               <tr key={idx}>
                 <td className="px-6 py-4 whitespace-nowrap">
+                  {shipment.sender.slice(0, 15)}...
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
                   {shipment.receiver.slice(0, 15)}...
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">

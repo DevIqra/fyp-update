@@ -4,7 +4,7 @@ async function main() {
   const Tracking = await hre.ethers.getContractFactory("Tracking");
   const tracking = await Tracking.deploy();
 
-  // Remove this line -> await tracking.deploy();
+  // await tracking.deploy();
 
   console.log(`Tracking deployed to ${tracking.target}`);
 }
